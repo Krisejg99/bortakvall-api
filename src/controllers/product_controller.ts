@@ -58,6 +58,31 @@ export const show = async (req: Request, res: Response) => {
  * Create a product
  */
 export const store = async (req: Request, res: Response) => {
+    const { id, name, description, price, images, stock_status, stock_quantity } = req.body
+
+    try {
+        const product = await prisma.product.create({
+            data: {
+                id,
+                name,
+                description,
+                price,
+                images,
+                stock_status,
+                stock_quantity,
+            },
+        })
+        res.status(201).send({
+            status: "success",
+            data: product,
+        })
+    }
+    catch (err) {
+        res.status(404).send({
+            status: "fail",
+            message: "Something went wrong"
+        })
+    }
 }
 
 /**
