@@ -18,7 +18,7 @@ model Product {
 }
 
 model Order {
-    id                  Int          @id @default(autoincrement()) @db.UnsignedInt
+    id                  Int         @id @default(autoincrement()) @db.UnsignedInt
     customer_first_name String
     customer_last_name  String
     customer_address    String
@@ -26,11 +26,11 @@ model Order {
     customer_city       String
     customer_email      String
     customer_phone      String?
-    order_total         Int          @db.UnsignedInt
-    OrderItems          OrderItems[]
+    order_total         Int         @db.UnsignedInt
+    OrderItems          OrderItem[]
 }
 
-model OrderItems {
+model OrderItem {
     product_id Int   @id @default(autoincrement()) @db.UnsignedInt
     qty        Int   @db.UnsignedInt
     item_price Int   @db.UnsignedInt

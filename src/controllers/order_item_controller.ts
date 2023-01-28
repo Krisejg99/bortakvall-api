@@ -7,34 +7,34 @@ import { validationResult } from 'express-validator'
 import prisma from '../prisma'
 
 // Create a new debug instance
-const debug = Debug('prisma-boilerplate:I_AM_LAZY_AND_HAVE_NOT_CHANGED_THIS_😛')
+const debug = Debug('bortakvall:order_item_controller')
 
 /**
- * Get all resources
+ * Get all order_items
  */
 export const index = async (req: Request, res: Response) => {
 }
 
 /**
- * Get a single resource
+ * Get a single order_item
  */
 export const show = async (req: Request, res: Response) => {
 }
 
 /**
- * Create a resource
+ * Create a order_item
  */
 export const store = async (req: Request, res: Response) => {
 }
 
 /**
- * Update a resource
+ * Update a order_item
  */
 export const update = async (req: Request, res: Response) => {
 }
 
 /**
- * Delete a resource
+ * Delete a order_item
  */
 export const destroy = async (req: Request, res: Response) => {
 }
