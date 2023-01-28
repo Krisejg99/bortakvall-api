@@ -13,6 +13,19 @@ const debug = Debug('bortakvall:product_controller')
  * Get all products
  */
 export const index = async (req: Request, res: Response) => {
+    try {
+        const products = await prisma.product.findMany()
+        res.send({
+            status: "success",
+            data: products,
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status: "error",
+            message: "Something went wrong"
+        })
+    }
 }
 
 /**

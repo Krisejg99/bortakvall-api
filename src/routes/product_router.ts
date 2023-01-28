@@ -19,7 +19,11 @@ router.get('/:productId', show)
 /**
  * POST /products
  */
-router.post('/', [], store)
+router.post('/',
+    [
+        body('name').isString().bail().isLength({ min: 3, max: 191 }).withMessage('has to be 3-191 chars long'),
+    ],
+    store)
 
 /**
  * PATCH /products/:productId
