@@ -15,6 +15,7 @@ const debug = Debug('bortakvall:product_controller')
 export const index = async (req: Request, res: Response) => {
     try {
         const products = await prisma.product.findMany()
+
         res.send({
             status: "success",
             data: products,
@@ -58,12 +59,35 @@ export const show = async (req: Request, res: Response) => {
  * Create a product
  */
 export const store = async (req: Request, res: Response) => {
-    const { id, name, description, price, images, stock_status, stock_quantity } = req.body
+    const validationErrors = validationResult(req)
+	if (!validationErrors.isEmpty()) {
+		return res.status(400).send({
+			status: "fail",
+			data: validationErrors.array()
+		})
+	}
+
+    const { name, description, price, images, stock_status, stock_quantity } = req.body
+    
+    if (!(stock_status === 'instock' || stock_status === 'outofstock')) {
+        return res.status(400).send({
+            status: "fail",
+            message: "`stock_status` has to be `instock` or `outofstock`"
+        })
+    }
+
+    if (price < 1) {
+        return res.status(400).send({
+            status: "fail",
+            message: "`price` has to be at least 1"
+        })
+    }
+
+    console.log(price)
 
     try {
         const product = await prisma.product.create({
             data: {
-                id,
                 name,
                 description,
                 price,
@@ -95,4 +119,23 @@ export const update = async (req: Request, res: Response) => {
  * Delete a product
  */
 export const destroy = async (req: Request, res: Response) => {
+}
+
+export const template = async (req: Request, res: Response) => {
+    try {
+        const products = await prisma.product.createMany({
+            data: req.body,
+        })
+        
+        res.status(201).send({
+            status: "success",
+            data: products,
+        })
+    }
+    catch (err) {
+        res.status(404).send({
+            status: "fail",
+            message: "Something went wrong"
+        })
+    }
 }
