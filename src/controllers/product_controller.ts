@@ -48,8 +48,8 @@ export const show = async (req: Request, res: Response) => {
         })
     }
     catch (err) {
-        res.status(404).send({
-            status: "fail",
+        res.status(500).send({
+            status: "error",
             message: "Something went wrong"
         })
     }
@@ -83,8 +83,6 @@ export const store = async (req: Request, res: Response) => {
         })
     }
 
-    console.log(price)
-
     try {
         const product = await prisma.product.create({
             data: {
@@ -102,23 +100,11 @@ export const store = async (req: Request, res: Response) => {
         })
     }
     catch (err) {
-        res.status(404).send({
-            status: "fail",
+        res.status(500).send({
+            status: "error",
             message: "Something went wrong"
         })
     }
-}
-
-/**
- * Update a product
- */
-export const update = async (req: Request, res: Response) => {
-}
-
-/**
- * Delete a product
- */
-export const destroy = async (req: Request, res: Response) => {
 }
 
 export const template = async (req: Request, res: Response) => {
