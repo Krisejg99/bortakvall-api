@@ -2,8 +2,8 @@
  * Router Template
  */
 import express from 'express'
-import { body } from 'express-validator'
 import { index, show, store, update, destroy } from '../controllers/order_controller'
+import { createOrderRules } from '../validations/order_rules'
 const router = express.Router()
 
 /**
@@ -19,16 +19,6 @@ router.get('/:orderId', show)
 /**
  * POST /orders
  */
-router.post('/', [], store)
-
-/**
- * PATCH /orders/:orderId
- */
-router.patch('/:orderId', [], update)
-
-/**
- * DELETE /orders/:orderId
- */
-router.delete('/:orderId', destroy)
+router.post('/', createOrderRules, store)
 
 export default router

@@ -25,7 +25,25 @@ export const show = async (req: Request, res: Response) => {
  * Create a order
  */
 export const store = async (req: Request, res: Response) => {
-    const { customer_first_name, customer_last_name, customer_address, customer_postcode, customer_city, customer_email, customer_phone, order_total, order_items } = req.body
+    const validationErrors = validationResult(req)
+	if (!validationErrors.isEmpty()) {
+		return res.status(400).send({
+			status: "fail",
+			data: validationErrors.array()
+		})
+	}
+
+    const {
+        customer_first_name,
+        customer_last_name,
+        customer_address,
+        customer_postcode,
+        customer_city,
+        customer_email,
+        customer_phone,
+        order_total,
+        order_items
+    } = req.body
 
     try {
         const order = await prisma.order.create({
@@ -50,16 +68,4 @@ export const store = async (req: Request, res: Response) => {
     catch (err) {
         
     }
-}
-
-/**
- * Update a order
- */
-export const update = async (req: Request, res: Response) => {
-}
-
-/**
- * Delete a order
- */
-export const destroy = async (req: Request, res: Response) => {
 }
