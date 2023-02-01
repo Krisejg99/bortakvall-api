@@ -14,7 +14,11 @@ const debug = Debug('bortakvall:order_controller')
  */
 export const index = async (req: Request, res: Response) => {
     try {
-        const orders = await prisma.order.findMany()
+        const orders = await prisma.order.findMany({
+            include: {
+                order_items: true,
+            },
+        })
 
         res.send({
             status: "success",
@@ -90,10 +94,15 @@ export const store = async (req: Request, res: Response) => {
                 customer_email,
                 customer_phone,
                 order_total,
-                order_items,
+                order_items: {
+                    create: order_items,
+                },
+            },
+            include: {
+                order_items: true,
             },
         })
-
+        
         res.status(201).send({
             status: "success",
             data: order,
