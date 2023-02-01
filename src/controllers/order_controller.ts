@@ -33,6 +33,26 @@ export const index = async (req: Request, res: Response) => {
  * Get a single order
  */
 export const show = async (req: Request, res: Response) => {
+    const { orderId } = req.params
+
+    try {
+        const order = await prisma.order.findUniqueOrThrow({
+            where: {
+                id: Number(orderId),
+            },
+        })
+
+        res.send({
+            status: "success",
+            data: order,
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status: "error",
+            message: "Something went wrong"
+        })
+    }
 }
 
 /**
