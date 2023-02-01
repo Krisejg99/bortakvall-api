@@ -13,6 +13,20 @@ const debug = Debug('bortakvall:order_controller')
  * Get all orders
  */
 export const index = async (req: Request, res: Response) => {
+    try {
+        const orders = await prisma.order.findMany()
+
+        res.send({
+            status: "success",
+            data: orders,
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status: "error",
+            message: "Something went wrong"
+        })
+    }
 }
 
 /**
@@ -66,6 +80,9 @@ export const store = async (req: Request, res: Response) => {
         })
     }
     catch (err) {
-        
+        res.status(500).send({
+            status: "error",
+            message: "Something went wrong"
+        })
     }
 }
