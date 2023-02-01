@@ -2,7 +2,7 @@
  * Router Template
  */
 import express from 'express'
-import { index, show, store, update, destroy } from '../controllers/order_controller'
+import { index, show, store } from '../controllers/order_controller'
 import { createOrderRules } from '../validations/order_rules'
 const router = express.Router()
 
