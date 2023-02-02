@@ -42,7 +42,7 @@ export const show = async (req: Request, res: Response) => {
     })
 
     if (!product) {
-        return res.status(404).send({
+        return res.status(400).send({
             status: "fail",
             message: `${productId} is not a valid id`,
         })
@@ -80,7 +80,7 @@ export const store = async (req: Request, res: Response) => {
 		})
 	}
 
-    const { name, description, price, images, stock_status, stock_quantity } = req.body
+    const { name, description, price, on_sale, images, stock_status, stock_quantity } = req.body
 
     try {
         const product = await prisma.product.create({
@@ -88,6 +88,7 @@ export const store = async (req: Request, res: Response) => {
                 name,
                 description,
                 price,
+                on_sale,
                 images,
                 stock_status,
                 stock_quantity,

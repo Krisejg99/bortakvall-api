@@ -12,14 +12,16 @@ model Product {
     name           String
     description    String      @db.Text
     price          Int         @db.UnsignedInt
+    on_sale        Boolean
     images         Json        @default("{}")
-    stock_status   String      @default("instock")
+    stock_status   String
     stock_quantity Int         @db.UnsignedInt
     order_items    OrderItem[]
 }
 
 model Order {
     id                  Int         @id @default(autoincrement()) @db.UnsignedInt
+    order_date          DateTime?   @db.DateTime()
     customer_first_name String
     customer_last_name  String
     customer_address    String
@@ -28,6 +30,8 @@ model Order {
     customer_email      String
     customer_phone      String?
     order_total         Int         @db.UnsignedInt
+    created_at          DateTime?   @db.DateTime()
+    updated_at          DateTime?   @db.DateTime()
     order_items         OrderItem[]
 }
 

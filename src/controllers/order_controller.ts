@@ -42,7 +42,7 @@ export const show = async (req: Request, res: Response) => {
     })
 
     if (!order) {
-        return res.status(404).send({
+        return res.status(400).send({
             status: "fail",
             message: `${orderId} is not a valid id`,
         })
