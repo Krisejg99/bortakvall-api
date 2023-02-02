@@ -1,13 +1,8 @@
 /**
  * Order Validations
  */
-import { body, CustomValidator } from 'express-validator'
-
-const isValidOrderTotal: CustomValidator = async total => {
-    if (total < 1) {
-        return Promise.reject("has to be at least 1")
-    }
-}
+import { body} from 'express-validator'
+import { isValidOrderTotal } from './custom_validations/order_custom'
 
 export const createOrderRules = [
     body('customer_first_name')

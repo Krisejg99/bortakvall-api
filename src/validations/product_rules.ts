@@ -1,20 +1,8 @@
 /**
  * Product Validations
  */
-import { body, CustomValidator } from 'express-validator'
-
-const isValidStockStatus: CustomValidator = async stock_status => {
-    if (!(stock_status === 'instock' || stock_status === 'outofstock')) {
-        return Promise.reject("has to be `instock` or `outofstock`")
-    }
-}
-
-const isValidPrice: CustomValidator = async price => {
-    if (price < 1) {
-        return Promise.reject("has to be at least 1")
-    }
-
-}
+import { body } from 'express-validator'
+import { isValidPrice, isValidStockStatus } from './custom_validations/product_custom'
 
 export const createProductRules = [
     body('name')
