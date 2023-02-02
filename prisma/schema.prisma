@@ -21,7 +21,7 @@ model Product {
 
 model Order {
     id                  Int         @id @default(autoincrement()) @db.UnsignedInt
-    order_date          DateTime?   @db.DateTime()
+    order_date          String?
     customer_first_name String
     customer_last_name  String
     customer_address    String
