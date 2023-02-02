@@ -35,6 +35,21 @@ export const index = async (req: Request, res: Response) => {
 export const show = async (req: Request, res: Response) => {
     const { orderId } = req.params
 
+
+
+            const order = await prisma.order.findUnique({
+                where:{
+                    id: Number(orderId)
+                }
+            })
+        
+            if (!order) {
+                return res.status(404).send({
+                    status: "fail",
+                    message: `${orderId} is not a valid id`,
+                })
+            }
+
     try {
         const order = await prisma.order.findUniqueOrThrow({
             where: {
