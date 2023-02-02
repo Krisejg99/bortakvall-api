@@ -103,7 +103,7 @@ const everything = [
             "large": "/storage/products/2147890-1.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Bubs Cool Cola Skalle",
@@ -403,7 +403,7 @@ const everything = [
             "large": "/storage/products/200367.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Jätte Colaflaska",
@@ -439,7 +439,7 @@ const everything = [
             "large": "/storage/products/2102365.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Kolaskruv Megasize",
@@ -475,7 +475,7 @@ const everything = [
             "large": "/storage/products/2502321.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Lys Melk",
@@ -571,7 +571,7 @@ const everything = [
             "large": "/storage/products/200337.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Nougatägg Stanniol",
@@ -643,7 +643,7 @@ const everything = [
             "large": "/storage/products/173119.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Pistols Jordgubb",
@@ -775,7 +775,7 @@ const everything = [
             "large": "/storage/products/200350.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Salt Vit Chokladlakrits",
@@ -955,7 +955,7 @@ const everything = [
             "large": "/storage/products/177188.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Sur Violbanan",
@@ -1123,7 +1123,7 @@ const everything = [
             "large": "/storage/products/203114.png"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Marsipanägg",
@@ -1207,7 +1207,7 @@ const everything = [
             "large": "/storage/products/cadillac.jpg"
         },
         "stock_status": "outofstock",
-        "stock_quantity": 0
+        "stock_quantity": null
     },
     {
         "name": "Kinder Bueno White Mini",
