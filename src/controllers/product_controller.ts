@@ -35,6 +35,19 @@ export const index = async (req: Request, res: Response) => {
 export const show = async (req: Request, res: Response) => {
     const { productId } = req.params
 
+    const product = await prisma.product.findUnique({
+        where:{
+            id: Number(productId)
+        }
+    })
+
+    if (!product) {
+        return res.status(404).send({
+            status: "fail",
+            message: `${productId} is not a valid id`,
+        })
+    }
+
     try {
         const product = await prisma.product.findUniqueOrThrow({
             where: {
