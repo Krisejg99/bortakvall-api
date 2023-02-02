@@ -68,20 +68,6 @@ export const store = async (req: Request, res: Response) => {
 	}
 
     const { name, description, price, images, stock_status, stock_quantity } = req.body
-    
-    if (!(stock_status === 'instock' || stock_status === 'outofstock')) {
-        return res.status(400).send({
-            status: "fail",
-            message: "`stock_status` has to be `instock` or `outofstock`"
-        })
-    }
-
-    if (price < 1) {
-        return res.status(400).send({
-            status: "fail",
-            message: "`price` has to be at least 1"
-        })
-    }
 
     try {
         const product = await prisma.product.create({

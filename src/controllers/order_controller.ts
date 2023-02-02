@@ -14,11 +14,7 @@ const debug = Debug('bortakvall:order_controller')
  */
 export const index = async (req: Request, res: Response) => {
     try {
-        const orders = await prisma.order.findMany({
-            include: {
-                order_items: true,
-            },
-        })
+        const orders = await prisma.order.findMany()
 
         res.send({
             status: "success",
@@ -43,6 +39,9 @@ export const show = async (req: Request, res: Response) => {
         const order = await prisma.order.findUniqueOrThrow({
             where: {
                 id: Number(orderId),
+            },
+            include: {
+                order_items: true,
             },
         })
 
