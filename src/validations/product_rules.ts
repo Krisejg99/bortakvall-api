@@ -30,6 +30,11 @@ export const createProductRules = [
         .not().isString().withMessage('has to be a number')
         .not().isArray().withMessage('has to be a number').bail()
         .custom(isValidPrice),
+
+    body('on_sale')
+        .isBoolean().withMessage('has to be a boolean, `true` or `false`').bail()
+        .not().isString().withMessage('has to be a boolean, `true` or `false`')
+        .not().isArray().withMessage('has to be a boolean, `true` or `false`'),
     
     body('images')
         .isObject().withMessage('has to be an object in JSON format'),
