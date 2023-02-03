@@ -2,7 +2,7 @@
  * Product Validations
  */
 import { body } from 'express-validator'
-import { isValidPrice, isValidStockStatus, isValidStockQuantity } from './custom_validations/product_custom'
+import { isValidPrice, isValidStockStatus, isValidStockQuantity } from './custom_validations/product_custom_val'
 
 export const createProductRules = [
     body('name')

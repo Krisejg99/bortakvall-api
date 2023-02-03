@@ -2,7 +2,7 @@
  * Order Validations
  */
 import { body} from 'express-validator'
-import { isValidOrderTotal } from './custom_validations/order_custom'
+import { isValidOrderTotal } from './custom_validations/order_custom_val'
 
 export const createOrderRules = [
     body('customer_first_name')
