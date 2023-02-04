@@ -1,10 +1,10 @@
 /**
  * Example Seeder
  */
-import app from '../src/app'
-import prisma from '../src/prisma'
+// import app from '../src/app'
+// import prisma from '../src/prisma'
 
-async function main() {
+// async function main() {
 	/**
 	 * Publishers
 	 */
@@ -42,15 +42,15 @@ async function main() {
 	// })
 }
 
-main()
-	.then(async () => {
-		await prisma.$disconnect()
-	})
-	.catch(async (e) => {
-		console.error(e)
-		await prisma.$disconnect()
-		process.exit(1)
-	})
+// main()
+// 	.then(async () => {
+// 		await prisma.$disconnect()
+// 	})
+// 	.catch(async (e) => {
+// 		console.error(e)
+// 		await prisma.$disconnect()
+// 		process.exit(1)
+// 	})
 
 
 
