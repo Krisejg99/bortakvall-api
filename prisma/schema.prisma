@@ -45,8 +45,3 @@ model OrderItem {
     item_price Int     @db.UnsignedInt
     item_total Int     @db.UnsignedInt
 }
-
-model test {
-    id   Int    @id @default(autoincrement()) @db.UnsignedInt
-    name String
-}
