@@ -53,9 +53,12 @@ main()
 	})
 
 
-/*
-// All products
 
+/**
+ * Template for all Products
+ */
+
+/*
 const everything = [
     {
         "name": "Gott & Blandat Giants",
