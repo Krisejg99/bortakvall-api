@@ -6,8 +6,4 @@
 
 */
 -- AlterTable
-ALTER TABLE `order` MODIFY `created_at` DATETIME NULL,
-    MODIFY `updated_at` DATETIME NULL;
-
--- AlterTable
 ALTER TABLE `product` MODIFY `stock_quantity` INTEGER UNSIGNED NULL DEFAULT 0;
