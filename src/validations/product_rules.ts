@@ -38,5 +38,3 @@ export const createProductRules = [
         .not().isArray().withMessage('has to be `null`, `0` or a positive integer').bail()
         .not().contains('.').withMessage('has to be an integer'),
 ]
-
-// Test
