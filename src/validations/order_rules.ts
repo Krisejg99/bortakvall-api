@@ -1,8 +1,7 @@
 /**
  * Order Validations
  */
-import { body} from 'express-validator'
-import { isValidOrderTotal } from './custom_validations/order_custom_val'
+import { body } from 'express-validator'
 
 export const createOrderRules = [
     body('customer_first_name')
@@ -34,11 +33,30 @@ export const createOrderRules = [
         .isString().withMessage('has to be a string'),
 
     body('order_total')
-        .isInt().withMessage('has to be a number').bail()
-        .not().isString().withMessage('has to be a number')
-        .not().isArray().withMessage('has to be a number').bail()
-        .custom(isValidOrderTotal),
+        .isInt({ min: 1 }).withMessage('has to be an integer: 1 or above').bail()
+        .not().isString().withMessage('has to be an integer: 1 or above')
+        .not().isArray().withMessage('has to be an integer: 1 or above'),
 
     body('order_items')
-        .isArray().withMessage('has to be an array [] that contains order_items'),
+        .isArray({ min: 1 }).withMessage('has to be an array[] of objects{} that contain: `product_id`, `qty`, `item_price`, `item_total`'),
+
+    body('order_items.*.product_id')
+        .isInt({ min: 1 }).withMessage('has to be an integer: 1 or above').bail()
+        .not().isString().withMessage('has to be an integer: 1 or above')
+        .not().isArray().withMessage('has to be an integer: 1 or above'),
+
+    body('order_items.*.qty')
+        .isInt({ min: 1 }).withMessage('has to be an integer: 1 or above').bail()
+        .not().isString().withMessage('has to be an integer: 1 or above')
+        .not().isArray().withMessage('has to be an integer: 1 or above'),
+
+    body('order_items.*.item_price')
+        .isInt({ min: 1 }).withMessage('has to be an integer: 1 or above').bail()
+        .not().isString().withMessage('has to be an integer: 1 or above')
+        .not().isArray().withMessage('has to be an integer: 1 or above'),
+
+    body('order_items.*.item_total')
+        .isInt({ min: 1 }).withMessage('has to be an integer: 1 or above').bail()
+        .not().isString().withMessage('has to be an integer: 1 or above')
+        .not().isArray().withMessage('has to be an integer: 1 or above'),
 ]
