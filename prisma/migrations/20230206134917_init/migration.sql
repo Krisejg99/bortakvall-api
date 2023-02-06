@@ -6,7 +6,7 @@ CREATE TABLE `Product` (
     `price` INTEGER UNSIGNED NOT NULL,
     `on_sale` BOOLEAN NULL DEFAULT false,
     `images` JSON NOT NULL,
-    `stock_status` VARCHAR(191) NOT NULL DEFAULT 'instock',
+    `stock_status` VARCHAR(191) NOT NULL,
     `stock_quantity` INTEGER UNSIGNED NOT NULL,
 
     PRIMARY KEY (`id`)
