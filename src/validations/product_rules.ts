@@ -20,6 +20,7 @@ export const createProductRules = [
         .custom(isValidPrice),
 
     body('on_sale')
+        .optional()
         .isBoolean().withMessage('has to be a boolean, `true` or `false`').bail()
         .not().isString().withMessage('has to be a boolean, `true` or `false`')
         .not().isArray().withMessage('has to be a boolean, `true` or `false`'),
@@ -32,8 +33,9 @@ export const createProductRules = [
         .custom(isValidStockStatus),
     
     body('stock_quantity')
-        .not().isString().withMessage('has to be a number')
-        .not().isArray().withMessage('has to be a number')
-        .not().isBoolean().withMessage('has to be a number')
-        .custom(isValidStockQuantity),
+        .custom(isValidStockQuantity).bail()
+        .not().isString().withMessage('has to be `null`, `0` or a positive integer')
+        .not().isArray().withMessage('has to be `null`, `0` or a positive integer').bail()
+        .not().contains('.').withMessage('has to be an integer')
+        ,
 ]

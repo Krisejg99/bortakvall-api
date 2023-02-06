@@ -16,7 +16,7 @@ export const isValidStockStatus: CustomValidator = async stock_status => {
 }
 
 export const isValidStockQuantity: CustomValidator = async value => {
-    if (!(value >= 0 || value === null)) {
-        return Promise.reject('has to be `null`, `0` or a positive number')
+    if (!(value >= 0 || value === null) || (value === true || value === false)) {
+        return Promise.reject('has to be `null`, `0` or a positive integer')
     }
 }
