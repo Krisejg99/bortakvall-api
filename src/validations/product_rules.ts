@@ -39,3 +39,5 @@ export const createProductRules = [
         .not().contains('.').withMessage('has to be an integer')
         ,
 ]
+
+// hej
