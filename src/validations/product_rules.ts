@@ -27,6 +27,14 @@ export const createProductRules = [
     
     body('images')
         .isObject().withMessage('has to be an object in JSON format'),
+
+    body('images.thumbnail')
+        .isString().withMessage('has to be a string').bail()
+        .isLength({ min: 3 }).withMessage('has to be 3 chars long'),
+
+    body('images.large')
+        .isString().withMessage('has to be a string').bail()
+        .isLength({ min: 3 }).withMessage('has to be 3 chars long'),
     
     body('stock_status')
         .isString().withMessage('has to be a string').bail()

@@ -80,7 +80,7 @@ export const store = async (req: Request, res: Response) => {
 		})
 	}
 
-    const { name, description, price, on_sale, images, stock_status, stock_quantity } = req.body
+    const { name, description, price, on_sale, images: { thumbnail, large }, stock_status, stock_quantity } = req.body
 
     try {
         const product = await prisma.product.create({
@@ -89,7 +89,10 @@ export const store = async (req: Request, res: Response) => {
                 description,
                 price,
                 on_sale,
-                images,
+                images: {
+                    thumbnail,
+                    large,
+                },
                 stock_status,
                 stock_quantity,
             },
