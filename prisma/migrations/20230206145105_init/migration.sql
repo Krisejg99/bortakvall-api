@@ -7,7 +7,7 @@ CREATE TABLE `Product` (
     `on_sale` BOOLEAN NULL DEFAULT false,
     `images` JSON NOT NULL,
     `stock_status` VARCHAR(191) NOT NULL,
-    `stock_quantity` INTEGER UNSIGNED NOT NULL,
+    `stock_quantity` INTEGER UNSIGNED NULL DEFAULT 0,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
