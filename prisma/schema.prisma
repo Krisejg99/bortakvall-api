@@ -45,3 +45,5 @@ model OrderItem {
     item_price Int     @db.UnsignedInt
     item_total Int     @db.UnsignedInt
 }
+
+// Test
