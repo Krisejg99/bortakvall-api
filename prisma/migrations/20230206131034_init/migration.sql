@@ -4,10 +4,10 @@ CREATE TABLE `Product` (
     `name` VARCHAR(191) NOT NULL,
     `description` TEXT NOT NULL,
     `price` INTEGER UNSIGNED NOT NULL,
-    `on_sale` BOOLEAN NOT NULL,
+    `on_sale` BOOLEAN NULL DEFAULT false,
     `images` JSON NOT NULL,
-    `stock_status` VARCHAR(191) NOT NULL DEFAULT 'instock',
-    `stock_quantity` INTEGER UNSIGNED NULL DEFAULT 0,
+    `stock_status` VARCHAR(191) NOT NULL,
+    `stock_quantity` INTEGER UNSIGNED NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
