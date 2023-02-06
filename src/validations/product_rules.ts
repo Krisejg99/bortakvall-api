@@ -36,9 +36,5 @@ export const createProductRules = [
         .custom(isValidStockQuantity).bail()
         .not().isString().withMessage('has to be `null`, `0` or a positive integer')
         .not().isArray().withMessage('has to be `null`, `0` or a positive integer').bail()
-        .not().contains('.').withMessage('has to be an integer')
-        ,
+        .not().contains('.').withMessage('has to be an integer'),
 ]
-
-// hej
-// hej igen
