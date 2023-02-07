@@ -37,7 +37,7 @@ export const createProductRules = [
     
     body('stock_status')
         .isString().withMessage('has to be a string').bail()
-        .isIn([ "instock", "outofstock" ]).withMessage("has to be `instock` or `outofstock`"),
+        .isIn([ 'instock', 'outofstock' ]).withMessage('has to be `instock` or `outofstock`'),
     
     body('stock_quantity')
         .custom(isValidStockQuantity).bail()
