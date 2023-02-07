@@ -2,7 +2,7 @@
  * Product Validations
  */
 import { body } from 'express-validator'
-import { isValidPrice, isValidStockStatus, isValidStockQuantity } from './custom_validations/product_custom_val'
+import { isValidStockQuantity } from './custom_validations/product_custom_val'
 
 export const createProductRules = [
     body('name')
@@ -14,10 +14,9 @@ export const createProductRules = [
         .isLength({ min: 3 }).withMessage('has to be at least 3 chars long'),
     
     body('price')
-        .isInt().withMessage('has to be a number').bail()
-        .not().isString().withMessage('has to be a number')
-        .not().isArray().withMessage('has to be a number').bail()
-        .custom(isValidPrice),
+        .isInt({ min: 1 }).withMessage('has to be a number: at least 1').bail()
+        .not().isString().withMessage('has to be a number: at least 1')
+        .not().isArray().withMessage('has to be a number: at least 1').bail(),
 
     body('on_sale')
         .optional()
@@ -38,7 +37,7 @@ export const createProductRules = [
     
     body('stock_status')
         .isString().withMessage('has to be a string').bail()
-        .custom(isValidStockStatus),
+        .isIn([ "instock", "outofstock" ]).withMessage("has to be `instock` or `outofstock`"),
     
     body('stock_quantity')
         .custom(isValidStockQuantity).bail()
