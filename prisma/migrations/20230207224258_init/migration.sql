@@ -24,8 +24,8 @@ CREATE TABLE `Order` (
     `customer_email` VARCHAR(191) NOT NULL,
     `customer_phone` VARCHAR(191) NULL,
     `order_total` INTEGER UNSIGNED NOT NULL,
-    `created_at` DATETIME NULL,
-    `updated_at` DATETIME NULL,
+    `created_at` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
