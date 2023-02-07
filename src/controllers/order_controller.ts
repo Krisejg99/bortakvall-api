@@ -58,6 +58,8 @@ export const show = async (req: Request, res: Response) => {
             },
         })
 
+        debug(order.order_date)
+
         res.send({
             status: "success",
             data: order,
@@ -97,10 +99,7 @@ export const store = async (req: Request, res: Response) => {
 
     const now = new Date()
     const [ date, time ] = now.toLocaleString().trim().split(',')
-
     const order_date = `${date}${time}`
-    const created_at = now
-    const updated_at = now
 
     try {
         const order = await prisma.order.create({
@@ -114,8 +113,6 @@ export const store = async (req: Request, res: Response) => {
                 customer_email,
                 customer_phone,
                 order_total,
-                created_at,
-                updated_at,
                 order_items: {
                     create: order_items,
                 },
@@ -124,7 +121,7 @@ export const store = async (req: Request, res: Response) => {
                 order_items: true,
             },
         })
-        
+
         res.status(201).send({
             status: "success",
             data: order,
